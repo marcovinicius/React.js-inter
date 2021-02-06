@@ -1,0 +1,230 @@
+<?php
+         $servername ="localhost";
+         $username   ="root";
+         $password   ="1234";
+         $database   ="pine in box";
+            // criando a conexão
+         $conn =mysqli_connect($servername,$username,$password,$database);
+           //verificando a conexão
+         if(!$conn){
+             die("A conexão ao BD falhou".mysqli_connect_error());
+         }
+?>
+
+    <!--PRODUTOS-->
+    <!DOCTYPE html>
+    <html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Produtos - Pine in box</title>
+        <link rel="stylesheet" href="./css/estilo.css" type="text/css">
+        <script src="js/funcoes.js"></script>
+
+    </head>
+
+    <body>
+        <div class="container">
+            <!--Inicio do Menu-->
+            <header>
+
+
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+                <nav class=" navbar navbar-expand-xl bg-dark navbar-dark sticky-top">
+
+                    <a class="navbar-brand " href="pagina_inicial.html">
+                        <img src="./Logo.jpeg " alt="logo " style="width:60px;" class="rounded">
+                    </a>
+
+                    <!-- Links -->
+                    <button class="navbar-toggler " type="button " data-toggle="collapse " data-target="#collapsibleNavbar ">
+                        <span class="navbar-toggler-icon "></span>
+                      </button>
+                    <div class="collapse navbar-collapse " id="collapsibleNavbar ">
+                        <ul class="navbar-nav ">
+                            <li class="nav-item ">
+                                <a class="nav-link " href="produtos_.html">Produtos</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link " href="nossas_lojas.html">Nossas Lojas</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link " href="fale_conosco.html">Fale Conosco</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <form class="form-inline " action="/action_page.php ">
+                        <input class="form-control mr-sm-2 " type="text " placeholder="Buscar">
+                        <button class="btn btn-success " type="submit ">Buscar</button>
+                    </form>
+
+                </nav>
+                <!--Fim do menu-->
+
+
+                <h1 style="color: #ad0404; ">Produtos</h1>
+            </header>
+            <hr>
+
+
+            <div class="categorias ">
+                <h3 style="color: blue; ">Categorias</h3>
+                <ul>
+                    <li onclick="exibir_todos_categoria() ">Todos(9)</li>
+                    <li onclick="exibir_apenas_categoria( 'Celulares') ">Celulares (2)</li>
+                    <li onclick="exibir_apenas_categoria( 'TVs') ">TVs (2)</li>
+                    <li onclick="exibir_apenas_categoria( 'Eletrodomésticos') ">Eletrodomésticos (2)</li>
+                    <li onclick="exibir_apenas_categoria( 'Livros') ">Livros (2)</li>
+                    <li onclick="exibir_apenas_categoria( 'Drones') ">Drones (1)</li>
+                </ul>
+            </div>
+
+            <div class="produtos ">
+
+                <!-- <?php -->
+                <!-- $sql = "select *from produtos "; -->
+                <!-- $result = $conn->query($sql); -->
+
+                <!-- if($result->num_rows > 0){ -->
+                <!-- while($rows = $result->fetch_assoc()){ -->
+                <!-- ?> -->
+
+                <div class="container-md ">
+                    <div class="box_produto " id="<?php echo $rows[ " categorias "]; ?>" style="display:block;">
+                        <img src="<?php echo $rows[" imagem "]; ?>" class="rounded" width="120px" onclick="exibir_destaque_produto(this)">
+                        <br>
+                        <p id="descricao">
+                            <?php echo $rows["descricao"]; ?>
+                        </p>
+                        <hr>
+                        <p id="antigo"><strike>R$<?php echo $rows["preco"]; ?></strike><br></p>
+                        <p class="preço">R$
+                            <?php echo $rows["preco_venda"]; ?><br></p>
+                    </div>
+
+                    <div class="box_produto" id="<?php echo $rows[" categorias "]; ?>" style="display: block;">
+                        <img src="<?php echo $rows[" imagem "]; ?>" class="rounded" width="120px" onclick="exibir_destaque_produto(this)">
+                        <br>
+                        <p id="descricao">
+                            <?php echo $rows["descricao"]; ?>
+                        </p>
+                        <hr>
+                        <p id="antigo"><strike>R$<?php echo $rows["preco"]; ?></strike><br></p>
+                        <p class="preço">R$
+                            <?php echo $rows["preco_venda"]; ?><br></p>
+                    </div>
+
+                    <div class="box_produto" id="<?php echo $rows[" categorias "]; ?>" style="display: block;">
+                        <img src="<?php echo $rows[" imagem "]; ?>" class="rounded" width="120px" onclick="exibir_destaque_produto(this)">
+                        <br>
+                        <p id="descricao">
+                            <?php echo $rows["descricao"]; ?>
+                        </p>
+                        <hr>
+                        <p id="antigo"><strike>R$ <?php echo $rows["preco"]; ?></strike><br></p>
+                        <p class="preço">R$
+                            <?php echo $rows["preco_venda"]; ?><br></p>
+                    </div>
+
+                    <div class="box_produto" id="<?php echo $rows[" categorias "]; ?>" style="display: block;">
+                        <img src="<?php echo $rows[" imagem "]; ?>" class="rounded" width="120px" onclick="exibir_destaque_produto(this)">
+                        <br>
+                        <p id="descricao">
+                            <?php echo $rows["descricao"]; ?>
+                        </p>
+                        <hr>
+                        <p id="antigo"><strike>R$<?php echo $rows["preco"]; ?></strike><br></p>
+                        <p class="preço">R$
+                            <?php echo $rows["preco_venda"]; ?><br></p>
+                    </div>
+
+                    <div class="box_produto" id="<?php echo $rows[" categorias "]; ?>" style="display: block;">
+                        <img src="<?php echo $rows[" imagem "]; ?>" class="rounded" width="120px" onclick="exibir_destaque_produto(this)">
+                        <br>
+                        <p id="descricao">
+                            <?php echo $rows["descricao"]; ?>
+                        </p>
+                        <hr>
+                        <p id="antigo"><strike>R$<?php echo $rows["preco"]; ?></strike><br></p>
+                        <p class="preço">R$
+                            <?php echo $rows["preco_venda"]; ?><br></p>
+                    </div>
+
+                    <div class="box_produto" id="<?php echo $rows[" categorias "]; ?>" style="display: block;">
+                        <img src="<?php echo $rows[" imagem "]; ?>" class="rounded" width="120px" onclick="exibir_destaque_produto(this)">
+                        <br>
+                        <p id="descricao">
+                            <?php echo $rows["descricao"]; ?>
+                        </p>
+                        <hr>
+                        <p id="antigo"><strike>R$<?php echo $rows["preco"]; ?></strike><br></p>
+                        <p class="preço">R$
+                            <?php echo $rows["preco_venda"]; ?><br></p>
+                    </div>
+
+                    <div class="box_produto" id="<?php echo $rows[" categorias "]; ?>" style="display: block;">
+                        <img src="<?php echo $rows[" imagem "]; ?>" class="rounded" width="120px" onclick="exibir_destaque_produto(this)">
+                        <br>
+                        <p id="descricao">
+                            <?php echo $rows["descricao"]; ?>
+                        </p>
+                        <hr>
+                        <p id="antigo"><strike>R$<?php echo $rows["preco"]; ?></strike><br></p>
+                        <p class="preço">R$
+                            <?php echo $rows["preco_venda"]; ?><br></p>
+                    </div>
+
+                    <div class="box_produto" id="<?php echo $rows[" categorias "]; ?>" style="display: block;">
+                        <img src="<?php echo $rows[" imagem "]; ?>" class="rounded" width="120px" onclick="exibir_destaque_produto(this)">
+                        <br>
+                        <p id="descricao">
+                            <?php echo $rows["descricao"]; ?>
+                        </p>
+                        <hr>
+                        <p id="antigo" <strike>R$
+                            <?php echo $rows["preco"]; ?>
+                            </strike><br></p>
+                        <p class="preço">R$
+                            <?php echo $rows["preco_venda"]; ?><br></p>
+                    </div>
+
+                    <div class="box_produto" id="<?php echo $rows[" categorias "]; ?>" style="display: block;">
+                        <img src="<?php echo $rows[" imagem "]; ?>" class="rounded" width="120px" onclick="exibir_destaque_produto(this)">
+                        <br>
+                        <p id="descricao">
+                            <?php echo $rows["descricao"]; ?>r</p>
+                        <hr>
+                        <p id="antigo"><strike>R$<?php echo $rows["preco"]; ?></strike><br></p>
+                        <p class="preço">R$
+                            <?php echo $rows["preco_venda"]; ?><br></p>
+                    </div>
+                </div>
+                <!-- <?php -->
+                <!-- } -->
+                <!-- } else{ -->
+                <!-- echo "Nenhum produto cadastrado!"; -->
+                <!-- } -->
+                <!-- ?> -->
+            </div>
+
+            <br><br><br><br><br>
+            <br><br><br><br><br>
+
+            <footer id="rodape">
+                <p id="formas_pagamento"><b>Formas de pagamentos.</b></p>
+                <img width="35%" src="./formas_de_pagamentos.png" alt="Formas de pagamentos">
+                <p id="copy">&copy; Pine in box</p>
+            </footer>
+        </div>
+    </body>
+
+    </html>
